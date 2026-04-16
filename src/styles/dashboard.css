@@ -13,6 +13,19 @@
   text-align: center;
 }
 
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-header h2 {
+  flex: 1;
+  margin-bottom: 0;
+}
+
 .dashboard-container h3 {
   color: #2c3e50;
   margin-bottom: 1rem;
@@ -24,6 +37,10 @@
   background: #f8f9fa;
   border-radius: 8px;
   color: #555;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
 }
 
 .casas-propietario {
@@ -85,8 +102,14 @@
 
 .acciones {
   text-align: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
+.btn-primary-action,
+.btn-warning,
 .btn-danger,
 .btn-success,
 .btn-cancelar,
@@ -99,6 +122,27 @@
   font-weight: 600;
   transition: all 0.3s;
   white-space: nowrap;
+}
+
+.btn-primary-action {
+  background: linear-gradient(135deg, #4f46e5, #4338ca);
+  color: white;
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.25);
+}
+
+.btn-primary-action:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.3);
+}
+
+.btn-warning {
+  background-color: #f4c542;
+  color: #5b4300;
+}
+
+.btn-warning:hover {
+  background-color: #e0b129;
+  transform: translateY(-2px);
 }
 
 .btn-danger {
@@ -151,6 +195,10 @@
   animation: slideIn 0.3s ease-out;
 }
 
+.modal-formulario {
+  max-width: 720px;
+}
+
 @keyframes slideIn {
   from {
     transform: translateY(-50px);
@@ -170,6 +218,52 @@
 
 .modal-cuerpo {
   margin: 1.5rem 0;
+}
+
+.formulario-casa {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.formulario-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.campo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.campo-formulario label {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.campo-formulario input,
+.campo-formulario textarea {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid #d7dee5;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo-formulario input:focus,
+.campo-formulario textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.campo-formulario textarea {
+  resize: vertical;
+  min-height: 110px;
 }
 
 .modal-cuerpo p {
@@ -255,6 +349,11 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .tabla-casas {
     font-size: 0.9rem;
   }
@@ -264,6 +363,12 @@
     padding: 0.75rem;
   }
 
+  .formulario-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-primary-action,
+  .btn-warning,
   .btn-danger,
   .btn-success {
     padding: 0.5rem 0.8rem;
