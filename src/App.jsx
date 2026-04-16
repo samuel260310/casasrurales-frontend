@@ -28,10 +28,19 @@ function App() {
     setSeccionActiva('login')
   }
 
-  const handleLogout = () => {
-    localStorage.removeItem('usuarioAutenticado')
-    setUsuarioAutenticado(null)
-    setSeccionActiva('login')
+  const handleLogout = async () => {
+    try {
+      await fetch('/auth/logout', {
+        method: 'POST',
+        credentials: 'same-origin'
+      })
+    } catch (error) {
+      console.error('No se pudo cerrar la sesión en el servidor', error)
+    } finally {
+      localStorage.removeItem('usuarioAutenticado')
+      setUsuarioAutenticado(null)
+      setSeccionActiva('login')
+    }
   }
 
   // Si no está autenticado, mostrar login o registro

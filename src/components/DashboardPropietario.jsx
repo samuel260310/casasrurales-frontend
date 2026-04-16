@@ -14,7 +14,9 @@ export default function DashboardPropietario() {
 
   const obtenerMisCasas = async () => {
     try {
-      const response = await fetch('/api/propietario/mis-casas')
+      const response = await fetch('/api/propietario/mis-casas', {
+        credentials: 'same-origin'
+      })
       
       if (response.status === 401) {
         setMensaje('Debes estar autenticado como propietario')
@@ -53,7 +55,8 @@ export default function DashboardPropietario() {
 
     try {
       const response = await fetch(`/api/propietario/${casaAEliminar.codigoCasa}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        credentials: 'same-origin'
       })
 
       const data = await response.json()
@@ -78,7 +81,8 @@ export default function DashboardPropietario() {
   const reactivarCasa = async (codigoCasa) => {
     try {
       const response = await fetch(`/api/propietario/${codigoCasa}/reactivar`, {
-        method: 'POST'
+        method: 'POST',
+        credentials: 'same-origin'
       })
 
       const data = await response.json()

@@ -22,6 +22,7 @@ export default function Login({ onLoginSuccess, onRegistroClick }) {
         response = await fetch('/auth/login/cliente', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin',
           body: JSON.stringify({ 
             email: usuario,
             contrasena: password
@@ -40,6 +41,7 @@ export default function Login({ onLoginSuccess, onRegistroClick }) {
         response = await fetch('/auth/login/propietario', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin',
           body: JSON.stringify({ 
             nombreCuenta: usuario,
             contrasena: password
